@@ -1,0 +1,287 @@
+/* ==============================================
+   SISTEMA ACADÉMICO · NUEVA CAPA VISUAL (ITERACIÓN 5)
+   Conserva los estilos y cursos de la Iteración 3.
+   ============================================== */
+
+/* Barra de navegación fija en la cabecera, sin menús duplicados dentro del hero. */
+.encabezado-sistema {
+  position: relative; z-index: 20; display: flex; justify-content: space-between;
+  gap: 18px; min-height: 96px; height: auto; padding: 12px 0;
+}
+.marca-link { text-decoration: none; flex-shrink: 0; display: inline-flex; align-items: center; }
+.header-nav-desktop { display: flex; gap: 3px; align-items: center; justify-content: center; flex: 1; }
+.header-link { text-decoration: none; font-size: 11px; font-weight: 800; color: #343034; padding: 11px 10px; border-radius: 9px; white-space: nowrap; transition: background .2s ease,color .2s ease, transform .2s ease; }
+.header-link:hover { color: #9d2025; background: #f5ebeb; transform: translateY(-1px); }
+.header-link.seleccionado { background: #a22020; color: #fff; }
+.header-acceso { flex-shrink: 0; }
+.header-boton-cuenta { display: inline-block; text-decoration: none; max-width: 145px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: #131315; color: #fff; padding: 12px 14px; border-radius: 9px; font-size: 11px; font-weight: 800; }
+.header-boton-cuenta:hover { background: #a22020; }
+.header-hamburguesa { display: none; width: 43px; height: 43px; flex: 0 0 43px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: #141414; border: 0; border-radius: 10px; cursor: pointer; }
+.header-hamburguesa span { width: 21px; height: 2px; background: #fff; border-radius: 2px; }
+.header-menu-movil { display: none; }
+
+/* Pantallas nuevas: no compiten con la estética blanca, negra, roja y dorada. */
+.sistema-pagina { padding: 42px 0 85px; min-height: 65vh; }
+.sistema-cabecera { background: linear-gradient(115deg,#151415 0%,#252021 69%,#5a1e26 100%); border-radius: 27px; color: #fff; padding: clamp(28px,5vw,58px); margin-bottom: 30px; overflow: hidden; position: relative; }
+.sistema-cabecera::after { content: '♠'; font-size: clamp(180px,25vw,340px); line-height: 1; position: absolute; right: -20px; bottom: -115px; color: rgba(232,21,61,.15); pointer-events: none; font-family: Georgia,serif; }
+.sistema-cabecera>* { position: relative; z-index: 1; }
+.sistema-kicker { display: inline-block; color: #aa202a; font-size: 10px; font-weight: 900; letter-spacing: 2.1px; text-transform: uppercase; }
+.sistema-cabecera .sistema-kicker, .sistema-curso-portada .sistema-kicker { color: #e9c276; }
+.sistema-cabecera h1 { font-size: clamp(37px,5vw,70px); line-height: 1.02; letter-spacing: -2.5px; margin: 14px 0 22px; max-width: 780px; }
+.sistema-cabecera p { font-size: 15px; line-height: 1.8; color: #ded7d7; max-width: 700px; }
+.sistema-acciones { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 22px; }
+.sistema-boton, .sistema-boton-outline { font: inherit; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; border: 1px solid transparent; cursor: pointer; font-size: 12px; font-weight: 850; border-radius: 9px; padding: 13px 19px; transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease; min-height: 43px; }
+.sistema-boton { background: linear-gradient(110deg,#f0d18b,#d2a43b); color: #17130f; box-shadow: 0 8px 15px rgba(69,43,7,.1); }
+.sistema-boton:hover { background: #f4d78c; box-shadow: 0 9px 18px rgba(49,29,6,.15); transform: translateY(-2px); }
+.sistema-boton-outline { color: #a22020; background: #fff; border-color: #b0262b; }
+.sistema-boton-outline:hover { background: #a22020; color: #fff; transform: translateY(-2px); }
+button:disabled { opacity: .6; cursor: not-allowed; }
+.sistema-panel { background: #fff; border: 1px solid #e6dfda; border-radius: 18px; padding: 26px; box-shadow: 0 12px 30px rgba(41,27,22,.05); }
+.sistema-panel h2 { margin: 0 0 16px; color: #1c1b1b; font-size: 24px; letter-spacing: -.5px; }
+.sistema-panel h3 { color: #242121; }
+.sistema-panel p { line-height: 1.65; color: #67605f; }
+.sistema-aviso, .sistema-vacio { padding: 24px 29px; background: #fff; border: 1px solid #e8dcd7; border-left: 4px solid #a22020; border-radius: 13px; margin-bottom: 20px; }
+.sistema-aviso strong, .sistema-vacio h2 { color: #8d2023; }
+.sistema-aviso p, .sistema-vacio p { color: #655f5c; line-height: 1.65; margin-bottom: 0; }
+.sistema-aviso a, .sistema-vacio a { color: #a22020; }
+.sistema-vacio { margin: 18px 0; }
+.sistema-cuenta-panel { width: min(100%,560px); margin: 0 auto; }
+.sistema-cuenta-panel .sistema-boton-outline { width: auto; }
+.sistema-tabs { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 25px; border-radius: 10px; padding: 4px; background: #f3efed; }
+.sistema-tabs button { cursor: pointer; padding: 13px; border: 0; border-radius: 8px; font: inherit; font-size: 12px; font-weight: 850; background: transparent; }
+.sistema-tabs button.activo { background: #a22020; color: #fff; }
+.sistema-formulario { display: flex; flex-direction: column; gap: 15px; }
+.sistema-formulario label { display: flex; flex-direction: column; gap: 8px; color: #3a3030; font-weight: 800; font-size: 12px; }
+.sistema-formulario input:not([type='checkbox']), .sistema-formulario textarea, .sistema-formulario select { box-sizing: border-box; width: 100%; border: 1px solid #d6cdca; border-radius: 10px; background: #fff; padding: 13px 14px; color: #211b1b; font: inherit; font-weight: 450; font-size: 14px; line-height: 1.5; }
+.sistema-formulario textarea { resize: vertical; }
+.sistema-formulario input:focus-visible,.sistema-formulario textarea:focus-visible,.sistema-formulario select:focus-visible { border-color: #a22020; outline: 3px solid #ecd4d4; }
+.sistema-formulario .sistema-check { flex-direction: row; align-items: center; gap: 11px; }
+.sistema-check input { accent-color: #a22020; width: 18px; height: 18px; }
+.sistema-error, .sistema-exito { padding: 14px 17px; border-radius: 10px; margin: 15px 0; line-height: 1.6; font-size: 13px; }
+.sistema-error { border: 1px solid #e0afb4; background: #fff2f2; color: #9e1b2c; }
+.sistema-exito { border: 1px solid #b8d6bd; background: #f0f8ee; color: #275b2d; }
+.sistema-ayuda { font-size: 12px; color: #766f69; }
+.sistema-enlace-peligro { cursor: pointer; background: transparent; border: 0; color: #a22020; text-decoration: underline; font: inherit; font-size: 12px; font-weight: 800; padding: 12px 5px; }
+
+/* Catálogo y vista lectora para cursos nuevos publicados desde el admin */
+.sistema-cursos-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; }
+.sistema-curso { background: #fff; border: 1px solid #e6dedb; border-radius: 17px; overflow: hidden; box-shadow: 0 13px 28px rgba(36,25,20,.06); transition: transform .2s ease,box-shadow .2s ease; }
+.sistema-curso:hover { transform: translateY(-5px); box-shadow: 0 16px 35px rgba(36,25,20,.12); }
+.sistema-curso-imagen { display: block; width: 100%; height: 205px; object-fit: cover; background: #131416; }
+.sistema-curso-cuerpo { padding: 22px; }
+.sistema-curso-cuerpo h2 { font-size: 22px; margin: 11px 0; line-height: 1.25; }
+.sistema-curso-cuerpo h2 a { text-decoration: none; color: #171717; }
+.sistema-curso-cuerpo h2 a:hover { color: #a22020; }
+.sistema-curso-cuerpo p { color: #726b65; line-height: 1.65; min-height: 75px; font-size: 13px; }
+.sistema-migas { font-size: 12px; margin: 0 0 20px; color: #888; }
+.sistema-migas a { color: #a22020; text-decoration: none; }
+.sistema-curso-portada { display: grid; grid-template-columns: 1.2fr .8fr; background: #151416; border-radius: 24px; overflow: hidden; color: #fff; min-height: 345px; }
+.sistema-curso-portada>div { padding: clamp(25px,5vw,50px); align-self: center; }
+.sistema-curso-portada h1 { font-size: clamp(34px,4vw,55px); line-height: 1.05; letter-spacing: -1px; margin: 18px 0; }
+.sistema-curso-portada p { color: #ded8d6; line-height: 1.7; }
+.sistema-curso-portada .sistema-curso-imagen { height: 100%; min-height: 345px; }
+.sistema-lecciones-total { display: inline-block; margin-top: 17px; padding: 9px 12px; background: #7b2331; border-radius: 7px; font-size: 12px; font-weight: 800; }
+.sistema-curso-layout { display: grid; grid-template-columns: 260px minmax(0,1fr); gap: 28px; margin: 30px 0; align-items: start; }
+.sistema-temario { position: sticky; top: 20px; padding: 22px; border: 1px solid #e3dcda; border-radius: 14px; background: #fff; }
+.sistema-temario h2 { font-size: 19px; margin: 0 0 14px; }
+.sistema-temario nav { display: grid; gap: 5px; }
+.sistema-temario a { display: block; text-decoration: none; font-size: 13px; color: #4a4141; line-height: 1.5; padding: 10px 8px; border-radius: 6px; }
+.sistema-temario a:hover { background: #fff1f1; color: #a22020; }
+.sistema-capitulo { scroll-margin-top: 22px; padding: 40px; margin-bottom: 18px; border: 1px solid #e4ddda; background: #fff; border-radius: 16px; }
+.sistema-capitulo h2 { font-size: clamp(25px,3vw,36px); line-height: 1.2; letter-spacing: -.8px; color: #1c1b1b; margin: 12px 0 22px; }
+.sistema-parrafo { white-space: pre-line; font-size: 15px; line-height: 1.95; color: #45403e; margin: 0 0 21px; }
+.sistema-lectura .sistema-aviso { margin-top: 28px; }
+
+/* Gestor de cursos */
+.sistema-admin-grid { display: grid; grid-template-columns: 285px minmax(0,1fr); gap: 20px; align-items: start; }
+.sistema-admin-lista { position: sticky; top: 15px; }
+.sistema-admin-lista p { font-size: 13px; }
+.sistema-admin-item { cursor: pointer; text-align: left; border: 1px solid #eee7e3; background: #fff; width: 100%; display: flex; flex-direction: column; gap: 6px; border-radius: 9px; padding: 15px 13px; margin-top: 8px; }
+.sistema-admin-item strong { color: #322b2b; font-size: 14px; }
+.sistema-admin-item small { color: #8b817d; font-size: 11px; }
+.sistema-admin-item:hover,.sistema-admin-item.activo { border-color: #b5232d; background: #fff5f4; }
+.sistema-admin-editor { display: flex; flex-direction: column; gap: 20px; }
+.sistema-lecciones-admin p { font-size: 13px; }
+.sistema-leccion-item { padding: 12px 5px; border-bottom: 1px solid #eee6e3; display: flex; align-items: center; gap: 10px; justify-content: space-between; }
+.sistema-leccion-item span { font-size: 13px; font-weight: 700; }
+.sistema-leccion-item div { display: flex; gap: 8px; }
+.sistema-leccion-item button { cursor: pointer; color: #9b1c23; background: #fff; border: 1px solid #ecd3d2; border-radius: 5px; padding: 7px 9px; font-size: 12px; }
+.sistema-lecciones-admin form { margin-top: 30px; }
+
+/* Foro comunitario */
+.sistema-comunidad-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(280px,.7fr); gap: 20px; align-items: start; }
+.sistema-foro-cabecera { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 20px 24px; }
+.sistema-foro-cabecera h2 { margin: 0; }
+.sistema-foro-cabecera span { color: #888; font-size: 12px; }
+.sistema-lista-posts { display: grid; gap: 11px; }
+.sistema-post { border-radius: 13px; border: 1px solid #e2d8d4; background: #fff; overflow: hidden; transition: border .2s, transform .2s, box-shadow .2s; }
+.sistema-post:hover,.sistema-post.elegido { transform: translateY(-2px); border-color: #a22020; box-shadow: 0 12px 25px rgba(29,25,22,.07); }
+.sistema-post-boton { display: block; width: 100%; text-align: left; border: 0; cursor: pointer; background: transparent; padding: 22px 25px; font: inherit; }
+.sistema-post-boton h3 { color: #252222; font-size: 20px; margin: 10px 0; }
+.sistema-post-boton p { color: #65615e; line-height: 1.6; font-size: 13px; }
+.sistema-post-boton small { display: block; color: #999; margin-top: 14px; }
+.sistema-columna-derecha { display: flex; flex-direction: column; gap: 15px; }
+.sistema-columna-derecha .sistema-aviso { margin: 0; }
+.sistema-columna-derecha .sistema-panel h2 { font-size: 21px; }
+.sistema-hilo { margin-top: 23px; scroll-margin-top: 20px; }
+.sistema-hilo-cabecera { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.sistema-hilo h2 { font-size: clamp(25px,3vw,34px); margin: 20px 0; }
+.sistema-hilo-texto { color: #302b29 !important; font-size: 15px; white-space: pre-line; }
+.sistema-hilo>small { color: #8b817e; }
+.sistema-respuestas { padding: 22px 0; margin-top: 23px; border-top: 1px solid #e6dedc; }
+.sistema-respuestas h3 { font-size: 22px; }
+.sistema-respuesta { padding: 16px 0; border-bottom: 1px solid #eee8e6; }
+.sistema-respuesta strong { margin-right: 10px; }
+.sistema-respuesta small { color: #86817b; }
+.sistema-respuesta p { white-space: pre-line; color: #494340; }
+.sistema-respuesta button { cursor: pointer; border: none; background: transparent; color: #a22020; padding: 0; font-size: 12px; }
+
+/* Estados y teclado */
+.sistema-pagina button:focus-visible,.sistema-pagina a:focus-visible,.header-hamburguesa:focus-visible,.encabezado-sistema a:focus-visible { outline: 3px solid #e0af51; outline-offset: 3px; }
+@media (max-width: 1170px) {
+  .encabezado-sistema { gap: 10px; }
+  .header-link { padding: 11px 7px; font-size: 10px; }
+  .marca-nombre { font-size: 20px; }
+  .marca-emblema { transform: scale(.85); margin-right: -5px; }
+}
+@media (max-width: 960px) {
+  .header-nav-desktop, .header-acceso { display: none; }
+  .header-hamburguesa { display: flex; margin-left: auto; }
+  .header-menu-movil { position: absolute; top: calc(100% - 1px); right: 0; left: 0; background: #fff; display: grid; padding: 12px; box-shadow: 0 22px 35px rgba(20,10,10,.18); border: 1px solid #e7dddd; border-radius: 0 0 18px 18px; z-index: 30; }
+  .header-menu-movil .header-link { display: block; font-size: 14px; padding: 13px 15px; }
+  .header-link-cuenta { border-top: 1px solid #eee; margin-top: 6px; }
+  .sistema-cursos-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .sistema-admin-grid { grid-template-columns: 1fr; }
+  .sistema-admin-lista { position: static; }
+}
+@media (max-width: 720px) {
+  .encabezado-sistema { min-height: 78px; }
+  .sistema-pagina { padding-top: 24px; padding-bottom: 45px; }
+  .sistema-cabecera { border-radius: 20px; }
+  .sistema-cabecera h1 { letter-spacing: -1.5px; }
+  .sistema-cursos-grid { grid-template-columns: 1fr; }
+  .sistema-comunidad-grid, .sistema-curso-layout, .sistema-curso-portada { grid-template-columns: 1fr; }
+  .sistema-curso-portada .sistema-curso-imagen { height: 235px; min-height: 235px; }
+  .sistema-temario { position: static; }
+  .sistema-panel, .sistema-capitulo { padding: 20px; }
+  .sistema-hilo-cabecera { align-items: flex-start; flex-direction: column; }
+  .sistema-leccion-item { align-items: flex-start; flex-direction: column; }
+  .sistema-admin-item { width: 100%; }
+  .sistema-acciones .sistema-boton,.sistema-acciones .sistema-boton-outline { flex: 1 1 150px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sistema-pagina *, .encabezado-sistema *, .sistema-pagina *::before, .sistema-pagina *::after { animation-duration: .01ms!important; transition-duration: .01ms!important; scroll-behavior: auto!important; }
+}
+.sistema-reportes-admin { margin-top: 24px; }
+.sistema-reporte-item { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-top: 1px solid #eee5e0; }
+.sistema-reporte-item strong { color: #2d2525; font-size: 14px; display: block; }
+.sistema-reporte-item small { display: block; color: #858080; margin-top: 7px; }
+.sistema-reporte-item .sistema-acciones { margin: 0; }
+.sistema-banner-comunidad { background: #1c1a1b; color: #fff; margin: 0 0 68px; padding: 30px 38px; border-radius: 17px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.sistema-banner-comunidad h2 { margin: 8px 0; font-size: 27px; }
+.sistema-banner-comunidad p { color: #d4cbca; line-height: 1.6; margin: 0; font-size: 13px; }
+@media (max-width:720px){.sistema-reporte-item,.sistema-banner-comunidad{flex-direction:column;align-items:flex-start;}}
+
+.header-menu-movil[hidden] { display: none !important; }
+
+/* =====================================================
+   ITERACIÓN 6 · Imágenes, valoraciones y reacciones
+   ===================================================== */
+.sistema-selector-imagen { display: grid; gap: 9px; padding: 14px 16px; border: 1px dashed #cdbbb7; background: #fcf9f7; border-radius: 12px; }
+.sistema-selector-imagen > label { font-size: 12px; font-weight: 850; color: #3a3030; }
+.sistema-selector-imagen > input[type="file"] { max-width: 100%; font: inherit; font-size: 13px; color: #3a3030; }
+.sistema-selector-imagen > input[type="file"]::file-selector-button { border: 1px solid #a22020; background: #fff; color: #9d1e23; border-radius: 7px; padding: 10px 12px; font-weight: 800; margin-right: 12px; cursor: pointer; }
+.sistema-selector-imagen > small { color: #766d68; font-weight: 400; }
+.sistema-imagen-vista { display: grid; justify-items: start; gap: 9px; }
+.sistema-imagen-vista img { display: block; width: min(100%, 450px); max-height: 265px; object-fit: contain; border-radius: 11px; background: #e8e3e0; border: 1px solid #e6d8d2; }
+.sistema-imagen-vista button { padding: 9px 12px; font-size: 11px; }
+.sistema-leccion-figura { margin: 24px 0 30px; }
+.sistema-leccion-figura img { display: block; width: 100%; max-height: 550px; object-fit: contain; border: 1px solid #eee0db; background: #151414; border-radius: 12px; }
+.sistema-leccion-figura figcaption { text-align: center; color: #71665d; font-size: 13px; line-height: 1.5; padding: 10px 12px; }
+.sistema-calificar { display: flex; justify-content: space-between; align-items: center; gap: 28px; margin: 28px 0; }
+.sistema-calificar h2 { font-size: clamp(21px,3vw,26px); margin-bottom: 8px; }
+.sistema-calificar p { font-size: 13px; margin-bottom: 0; max-width: 640px; }
+.sistema-calificacion-texto { color: #8c3431; font-size: 13px; font-weight: 800; display: inline-block; margin-bottom: 9px; }
+.sistema-calificacion-texto span { color: #c99219; font-size: 18px; }
+.sistema-estrellas { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; min-width: 210px; }
+.sistema-estrellas button { border: 0; background: transparent; font-size: 32px; color: #c2bab4; cursor: pointer; transition: color .18s ease, transform .18s ease; padding: 2px 4px; line-height: 1.2; }
+.sistema-estrellas button:hover, .sistema-estrellas button.seleccionada { color: #d4a52f; transform: translateY(-2px); }
+.sistema-estrellas small { color: #68615f; font-size: 11px; flex-basis: 100%; }
+.sistema-votos { margin-top: 32px; padding-top: 20px; border-top: 1px solid #e6dedb; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.sistema-votos strong { font-size: 13px; color: #312a2a; }
+.sistema-votos-botones { display: flex; flex-wrap: wrap; gap: 8px; }
+.sistema-votos-botones button { font: inherit; border: 1px solid #ddd5d0; border-radius: 9px; padding: 10px 13px; background: #fff; color: #5b5550; font-size: 12px; cursor: pointer; }
+.sistema-votos-botones button:not(:disabled):hover { border-color: #a22020; color: #a22020; }
+.sistema-votos-botones button.activo { background: #a22020; color: #fff; border-color: #a22020; }
+.sistema-votos small { font-size: 12px; color: #79716d; }
+.sistema-post-miniatura { display: block; max-width: 100%; width: 230px; max-height: 150px; object-fit: cover; margin: 13px 0 0; border-radius: 9px; border: 1px solid #ede4e0; }
+.sistema-post-imagen { margin: 19px 0 25px; width: 100%; }
+.sistema-post-imagen img { display: block; width: 100%; max-height: 540px; object-fit: contain; background: #f5f0ee; border: 1px solid #e4deda; border-radius: 13px; }
+.sistema-post-imagen figcaption { font-size: 12px; color: #7a6d6a; margin-top: 8px; }
+.sistema-respuesta .sistema-post-imagen img { max-height: 350px; }
+@media (max-width: 720px) {
+  .sistema-calificar { flex-direction: column; align-items: flex-start; }
+  .sistema-votos { align-items: flex-start; flex-direction: column; gap: 11px; }
+  .sistema-capitulo .sistema-leccion-figura img { max-height: 380px; }
+}
+
+/* =========================================================
+   ITERACIÓN 7 · Mis cursos, progreso persistente y reseñas
+   ========================================================= */
+.sistema-seguimiento { display:flex; justify-content:space-between; align-items:center; gap:28px; margin:26px 0; }
+.sistema-seguimiento > div:first-child { flex:1; }
+.sistema-seguimiento h2 { margin-top:8px; }
+.sistema-seguimiento p { font-size:13px; max-width:590px; }
+.sistema-seguimiento-acciones { flex:0 1 330px; display:grid; gap:14px; }
+.sistema-progreso-etiqueta { display:flex; justify-content:space-between; gap:10px; align-items:center; font-size:13px; }
+.sistema-progreso-etiqueta strong { font-weight:850; color:#8f2023; }
+.sistema-progreso-etiqueta span { color:#726764; }
+.sistema-progreso-pista { width:100%; height:10px; background:#ece5e1; border-radius:99px; overflow:hidden; }
+.sistema-progreso-pista > span { display:block; height:100%; background:linear-gradient(90deg,#a22020,#d7a837); border-radius:99px; transition:width .3s ease; }
+.sistema-marcar-lectura { margin-top:27px; }
+.sistema-boton-lectura { font:inherit; font-size:12px; font-weight:850; background:#fff; border:1px solid #a22020; color:#922023; padding:12px 16px; border-radius:9px; cursor:pointer; }
+.sistema-boton-lectura:hover:not(:disabled) { background:#fff1ed; }
+.sistema-boton-lectura.leida { background:#eaf6ed; border-color:#3d8b51; color:#236239; }
+.sistema-mis-cursos-enlace { display:inline-block; margin-top:18px; color:#a22020; font-size:12px; font-weight:850; }
+.curso-guardar-seguimiento { display:block; width:100%; margin-top:14px; padding:11px 12px; border:1px solid #a22020; color:#922023; background:#fff; font:inherit; font-size:12px; font-weight:850; cursor:pointer; border-radius:9px; }
+.curso-guardar-seguimiento:hover:not(:disabled) { background:#fff0ef; }
+.sistema-mis-cursos-grid { display:grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap:22px; margin:32px 0; }
+.sistema-mis-curso { min-width:0; border:1px solid #e5ded9; background:#fff; border-radius:17px; overflow:hidden; box-shadow:0 10px 24px rgba(23,18,15,.055); }
+.sistema-mis-curso img { display:block; width:100%; height:210px; object-fit:cover; background:#161416; }
+.sistema-mis-curso-body { padding:23px; display:grid; gap:13px; }
+.sistema-mis-curso-body h2 { font-size:23px; margin:0; }
+.sistema-mis-curso-body h2 a { color:#221c1c; text-decoration:none; }
+.sistema-mis-curso-body h2 a:hover { color:#a22020; }
+.sistema-mis-curso-body > p { color:#706967; font-size:13px; line-height:1.7; margin:0; min-height:65px; }
+.sistema-mis-curso-body > .sistema-boton-outline { justify-self:start; margin-top:5px; }
+.sistema-resenas { margin:32px 0; }
+.sistema-resenas-cabecera { display:flex; align-items:start; justify-content:space-between; gap:22px; }
+.sistema-resenas-cabecera h2 { margin:8px 0; }
+.sistema-resenas-cabecera p { max-width:660px; font-size:13px; }
+.sistema-contador-resenas { flex-shrink:0; border:1px solid #e9dcd6; border-radius:99px; font-size:12px; padding:8px 13px; color:#8a252a; font-weight:800; }
+.sistema-resena-form { padding:20px; background:#faf6f4; border:1px solid #ecded8; border-radius:13px; margin:20px 0 28px; }
+.sistema-resenas-lista { display:grid; gap:16px; margin-top:26px; }
+.sistema-resena { padding:20px 0; border-top:1px solid #eee3df; }
+.sistema-resena-meta { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.sistema-resena-meta strong { font-size:13px; color:#2b2222; }
+.sistema-resena-meta > span, .sistema-resena-meta > small { font-size:11px; color:#7b7370; }
+.sistema-resena-meta .sistema-resena-oculta { color:#a22020; font-weight:800; }
+.sistema-resena p { white-space:pre-wrap; overflow-wrap:anywhere; color:#4b4140; font-size:14px; line-height:1.75; }
+.sistema-resena-reportar { color:#8a252a; border:none; background:none; text-decoration:underline; cursor:pointer; font:inherit; font-size:12px; padding:6px 0; }
+.sistema-reporte-resena { max-width:520px; margin-top:12px; }
+.sistema-moderacion-resenas { margin-top:28px; }
+.sistema-moderacion-resenas h3 { margin-top:28px; font-size:18px; }
+.sistema-admin-resena { border-top:1px solid #e6dfdc; padding:19px 0; }
+.sistema-admin-resena > strong { font-size:13px; }
+.sistema-admin-resena p { font-size:13px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.sistema-admin-resena button { margin-top:8px; }
+@media (max-width:860px) {
+  .sistema-seguimiento { flex-direction:column; align-items:stretch; }
+  .sistema-seguimiento-acciones { flex:auto; }
+  .sistema-mis-cursos-grid { grid-template-columns:1fr; }
+}
+@media (max-width:520px) {
+  .sistema-mis-curso img { height:170px; }
+  .sistema-resenas-cabecera { flex-direction:column; }
+  .sistema-progreso-etiqueta { flex-wrap:wrap; }
+}

@@ -1,0 +1,60 @@
+/* PokerWiki · Iteración 8. Se agrega como capa visual sin romper estilos anteriores. */
+.pw-inicio { margin-bottom: clamp(36px, 6vw, 84px); }
+.pw-inicio .hero-contenido { padding-top: clamp(40px,5vw,74px); padding-bottom: clamp(40px,5vw,74px); }
+.pw-inicio .hero-botones { margin-bottom: 20px; }
+.pw-inicio-ayuda { color:#665e5a; font-size:13px; line-height:1.65; }
+.pw-inicio-ayuda a { color:#a22020; font-weight:800; }
+.pw-inicio .boton { text-decoration:none; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+.pw-inicio .boton:hover { transform:translateY(-2px); }
+.pw-inicio .hero-imagen { min-height:350px; }
+
+/* Pie común de todas las páginas y en lugar de las tres tarjetas del inicio. */
+.pw-footer { margin-top:32px; border-top:4px solid #ad292e; background:#151314; color:#f5f0ed; border-radius:24px 24px 0 0; padding:42px clamp(20px,4vw,48px) 21px; }
+.pw-footer-superior { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(140px,1fr) minmax(140px,1fr); gap:30px; }
+.pw-footer-logo { font-size:26px; font-weight:900; letter-spacing:-1px; margin:0 0 10px; }
+.pw-footer-logo span { color:#e5b853; }
+.pw-footer p { color:#cac1c0; line-height:1.75; font-size:13px; max-width:410px; margin:0; }
+.pw-footer h2 { color:#f0c976; font-size:13px; letter-spacing:1px; margin:4px 0 16px; text-transform:uppercase; }
+.pw-footer nav { display:grid; gap:12px; align-content:start; }
+.pw-footer a { color:#f6efeb; font-size:13px; text-decoration:none; }
+.pw-footer a:hover { text-decoration:underline; color:#f0c976; }
+.pw-footer-inferior { display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; margin-top:35px; padding-top:20px; border-top:1px solid #4c3f3e; color:#c8bdbc; font-size:11px; line-height:1.65; }
+
+/* Regresar es una acción primaria contextual en ambas familias de cursos. */
+.pw-volver-curso { display:inline-flex; align-items:center; gap:8px; margin:6px 0 20px; padding:12px 16px; font-weight:850; font-size:13px; line-height:1.25; border-radius:10px; border:1px solid #ad292e; background:#fff; color:#a22020; text-decoration:none; transition:background .2s ease,transform .2s ease; }
+.pw-volver-curso:hover { background:#fff1ee; transform:translateX(-2px); }
+.pw-volver-curso:focus-visible, .pw-footer a:focus-visible, .pw-inicio a:focus-visible { outline:3px solid #d7a43e; outline-offset:3px; }
+
+/* Video: solo se carga el iframe externo después del consentimiento del estudiante. */
+.pw-video-leccion { background:#faf8f5; border:1px solid #e7d9cf; border-radius:17px; margin:30px 0; overflow:hidden; }
+.pw-video-cabecera { padding:23px 24px 16px; }
+.pw-video-cabecera h3 { margin:9px 0 6px; color:#241d1d; font-size:clamp(19px,2.5vw,25px); }
+.pw-video-cabecera p { color:#655c58; margin:7px 0 0; line-height:1.65; font-size:13px; }
+.pw-video-placeholder { min-height:250px; padding:34px 20px; background:radial-gradient(circle at 20% 10%,#5d2828,#191617 65%); color:white; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:12px; }
+.pw-video-placeholder .pw-video-icono { font-size:27px; background:#bd3139; display:grid; place-items:center; width:66px; height:66px; border-radius:50%; }
+.pw-video-placeholder strong { font-size:17px; }
+.pw-video-placeholder p { color:#ded3d0; font-size:12px; line-height:1.65; max-width:520px; margin:0; }
+.pw-video-placeholder button { margin-top:5px; }
+.pw-video-reproductor { aspect-ratio:16/9; width:100%; background:#131313; }
+.pw-video-reproductor iframe { display:block; border:0; width:100%; height:100%; }
+.pw-video-opciones { display:flex; flex-wrap:wrap; gap:15px; padding:12px 22px; border-bottom:1px solid #e9dfd9; align-items:center; }
+.pw-video-opciones a, .pw-video-cerrar { font:inherit; font-size:12px; font-weight:800; color:#a22020; background:none; border:0; padding:5px 0; cursor:pointer; }
+.pw-video-leccion > small { display:block; padding:12px 22px 16px; font-size:11px; line-height:1.5; color:#77706c; }
+.pw-video-editor { border:1px solid #e7d9cf; background:#fbf8f5; border-radius:12px; padding:16px; display:grid; gap:12px; }
+.pw-video-editor > strong { font-size:15px; }
+.pw-video-editor > p { font-size:12px; color:#766c66; margin:0; line-height:1.6; }
+.pw-video-editor-correcto { color:#236239 !important; font-size:12px; }
+.pw-video-editor-error { color:#a22020 !important; font-size:12px; }
+
+@media (max-width:720px) {
+  .pw-footer { padding:32px 22px 18px; margin-top:18px; }
+  .pw-footer-superior { grid-template-columns:1fr 1fr; gap:28px 14px; }
+  .pw-footer-superior > div:first-child { grid-column:1/-1; }
+  .pw-footer-inferior { margin-top:30px; }
+  .pw-inicio .hero-imagen { min-height:270px; }
+  .pw-video-placeholder { min-height:235px; }
+}
+@media (max-width:390px) { .pw-footer-superior { grid-template-columns:1fr; } .pw-footer-superior > div:first-child { grid-column:auto; } }
+@media (prefers-reduced-motion: reduce) {
+  .pw-volver-curso, .pw-inicio .boton { transition:none; transform:none!important; }
+}

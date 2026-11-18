@@ -1,0 +1,86 @@
+/* POKERWIKI · ITERACIÓN 9: navegación simplificada y aprendizaje sin duplicación. */
+/* Cartas visibles solo como accesos opcionales en escritorio; el enlace Cursos funciona por sí mismo. */
+.pw9-menu-cursos { position: relative; display: flex; align-items: center; }
+.pw9-menu-cursos > .header-link { display: inline-flex; align-items: center; min-height: 42px; }
+.pw9-menu-cursos > .header-link::after { content: '⌄'; margin-left: 6px; font-size: 14px; }
+.pw9-cartas-submenu { position: absolute; z-index: 60; top: calc(100% - 1px); left: 50%; width: 396px;
+  display: flex; justify-content: center; gap: 8px; padding: 22px 19px 17px;
+  background: #1b1719; border: 1px solid #51413e; border-top: 3px solid #c7a05b;
+  border-radius: 0 0 18px 18px; box-shadow: 0 22px 42px rgba(0,0,0,.22);
+  visibility: hidden; opacity: 0; pointer-events: none; transform: translate(-50%, -8px);
+  transition: opacity .19s ease, transform .19s ease, visibility .19s;
+}
+.pw9-menu-cursos:hover .pw9-cartas-submenu,
+.pw9-menu-cursos:focus-within .pw9-cartas-submenu {
+  visibility: visible; opacity: 1; pointer-events: auto; transform: translate(-50%, 0);
+}
+.pw9-carta { min-height: 146px; width: 112px; padding: 12px 8px; display: flex; flex-direction: column;
+  justify-content: space-between; align-items: center; text-align: center; text-decoration: none;
+  border: 2px solid #efe7db; background: #fdf9f2; color: #241c1a; border-radius: 11px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.19);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.pw9-carta-1 { transform: rotate(-6deg) translateY(3px); }
+.pw9-carta-2 { transform: rotate(1deg) translateY(-3px); }
+.pw9-carta-3 { transform: rotate(6deg) translateY(3px); }
+.pw9-carta:hover, .pw9-carta:focus-visible { transform: translateY(-12px) rotate(0); box-shadow: 0 16px 24px rgba(0,0,0,.32); outline: 3px solid #e5b853; outline-offset: 3px; }
+.pw9-carta-palo { color: #a22020; font: 39px/1 Georgia,serif; }
+.pw9-carta-1 .pw9-carta-palo, .pw9-carta-3 .pw9-carta-palo { color: #181818; }
+.pw9-carta strong { font-size: 11px; line-height: 1.28; }
+.pw9-carta small { font-size: 9px; line-height: 1.3; color: #756c66; }
+
+/* Un solo catálogo para contenido original y publicado; sin nuevas tablas. */
+.pw9-catalogo-intro { border: 1px solid #e5d7cc; background: #fffaf3; border-radius: 18px;
+  padding: 24px 28px; margin: 0 0 28px; display: flex; justify-content: space-between; align-items: center; gap: 26px; }
+.pw9-catalogo-intro h2 { font-size: 24px; margin: 7px 0; color: #211b1a; }
+.pw9-catalogo-intro p { color: #6c615c; margin: 8px 0 0; line-height: 1.65; font-size: 13px; max-width: 700px; }
+.pw9-catalogo-intro > a { white-space: nowrap; }
+.pw9-catalogo-busqueda { display: flex; align-items: center; gap: 20px; justify-content: space-between; margin-bottom: 9px; }
+.pw9-catalogo-filtros { display: flex; flex-wrap: wrap; gap: 7px; }
+.pw9-catalogo-filtros button { font: inherit; background: white; color: #4c4140; border: 1px solid #d8cfca;
+  padding: 10px 14px; border-radius: 9px; font-size: 12px; cursor: pointer; font-weight: 750; }
+.pw9-catalogo-filtros button:hover { border-color: #a22020; }
+.pw9-catalogo-filtros button.activo { background: #a22020; border-color: #a22020; color: white; }
+.pw9-catalogo-buscador { display: grid; gap: 4px; font-size: 11px; font-weight: 700; color: #5d514c; }
+.pw9-catalogo-buscador input { border: 1px solid #d8cfca; border-radius: 9px; padding: 10px 12px; font: inherit; min-width: 210px; }
+.pw9-catalogo-cuenta { color: #716661; font-size: 12px; margin: 12px 0 18px; }
+.pw9-ficha-original .pw9-duracion { display: block; color: #8c766c; font-size: 11px; margin-bottom: 14px; }
+.pw9-ficha-original .sistema-curso-cuerpo { display: flex; flex-direction: column; align-items: flex-start; }
+.pw9-ficha-original .sistema-curso-cuerpo p { min-height: 0; flex: 1; }
+.pw9-imagen-enlace { display: block; }
+
+/* La puntuación y las reseñas son la última etapa, después de leer. */
+.pw9-opiniones-final { margin: 50px 0 38px; border-top: 3px solid #a22020; padding-top: 24px; }
+.pw9-opiniones-intro h2 { font-size: clamp(26px,3.2vw,35px); margin: 10px 0 9px; }
+.pw9-opiniones-intro p { color: #665b55; font-size: 14px; line-height: 1.7; margin: 0 0 23px; }
+.pw9-opiniones-final .sistema-calificar { margin: 15px 0 21px; }
+.pw9-opiniones-final .sistema-resenas { margin: 21px 0; }
+
+/* Mantener el footer de ancho completo según la corrección local del usuario. */
+.pw-footer { width: 100%; box-sizing: border-box; border-radius: 0; }
+.pw-footer-superior, .pw-footer-inferior { max-width: 1202px; margin-left: auto; margin-right: auto; }
+
+/* Acceso a la última inscripción sin reconstruir las tarjetas descartadas del inicio. */
+.pw9-continuar { margin-top: 20px; border-top: 1px solid #eee0d5; padding-top: 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.pw9-continuar > div { display: grid; gap: 5px; }
+.pw9-continuar strong { color: #211c1a; font-size: 15px; }
+.pw9-continuar small { font-size: 11px; color: #766b66; }
+.pw9-continuar a { color: #a22020; font-size: 12px; white-space: nowrap; font-weight: 850; }
+
+@media (max-width: 960px) { .pw9-menu-cursos { display: none; } }
+@media (max-width: 720px) {
+  .pw9-catalogo-intro, .pw9-catalogo-busqueda { flex-direction: column; align-items: stretch; }
+  .pw9-catalogo-intro > a { white-space: normal; }
+  .pw9-catalogo-buscador input { width: 100%; box-sizing: border-box; }
+  .pw9-continuar { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pw9-cartas-submenu, .pw9-carta, .pw9-continuar * { animation: none !important; transition: none !important; }
+  .pw9-carta:hover, .pw9-carta:focus-visible { transform: none; }
+}
+/* Separación bajo el encabezado sin perder continuidad del hover. */
+@media (min-width: 961px) {
+  .pw9-cartas-submenu { top: calc(100% + 28px); }
+  .pw9-cartas-submenu::before { content: ''; position: absolute; inset: -30px 0 auto; height: 30px; }
+}

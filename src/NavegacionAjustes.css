@@ -1,0 +1,53 @@
+/* PokerWiki · Ajustes de navegación sobre Iteración 9. Sin cambios en Supabase. */
+/* Texto más legible y área de interacción amplia. */
+.encabezado-sistema { gap: 11px; }
+.header-nav-desktop { gap: 2px; min-width: 0; }
+.encabezado-sistema .header-nav-desktop .header-link {
+  font-size: 14px; font-weight: 800; letter-spacing: .005em;
+  padding: 14px 11px; line-height: 1.35; position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; overflow: visible; isolation: isolate;
+}
+.encabezado-sistema .header-boton-cuenta { font-size: 13px; max-width: 135px; }
+/* Símbolo flotante de cada pestaña. No aparece hasta hover/focus. */
+.pw-nav-palo {
+  position: absolute; top: -9px; left: 50%;
+  font: 25px/1 Georgia, serif; color: #a22020;
+  opacity: 0; pointer-events: none;
+  transform: translate(-50%, 8px) rotate(-18deg) scale(.55);
+  filter: drop-shadow(0 3px 4px rgba(22,18,18,.13));
+  transition: opacity .22s ease, transform .32s cubic-bezier(.18,.85,.27,1.25);
+}
+.pw-nav-item:hover .pw-nav-palo,
+.pw-nav-item:focus-visible .pw-nav-palo {
+  opacity: 1; transform: translate(-50%,-11px) rotate(0) scale(1);
+}
+.pw-nav-item[href="/mis-cursos"] .pw-nav-palo { color: #1d4e39; }
+.pw-nav-item[href="/modalidades"] .pw-nav-palo { color: #b82935; }
+.pw-nav-item[href="/academia"] .pw-nav-palo { color: #bf9a37; }
+/* Header en tablets: usar hamburguesa antes de apretar seis enlaces. */
+@media (max-width: 1210px) {
+  .header-nav-desktop, .header-acceso { display: none; }
+  .header-hamburguesa { display: flex; margin-left: auto; }
+  .header-menu-movil {
+    position: absolute; top: calc(100% - 1px); right: 0; left: 0;
+    background: #fff; display: grid; padding: 12px;
+    box-shadow: 0 22px 35px rgba(20,10,10,.18);
+    border: 1px solid #e7dddd; border-radius: 0 0 18px 18px; z-index: 35;
+  }
+  .header-menu-movil[hidden] { display: none !important; }
+  .encabezado-sistema .header-menu-movil .header-link {
+    font-size: 15px; padding: 14px 16px; min-height: 46px;
+  }
+  .header-menu-movil .pw-nav-palo { position: static; opacity: 1; transform: none;
+    filter: none; font-size: 18px; display: inline-block; margin-right: 11px; }
+  .header-menu-movil .pw-nav-item { display: flex; align-items: center; }
+  .header-menu-movil .pw-nav-item:hover .pw-nav-palo,
+  .header-menu-movil .pw-nav-item:focus-visible .pw-nav-palo { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pw-nav-palo { transition: none !important; }
+  .pw-nav-item:hover .pw-nav-palo, .pw-nav-item:focus-visible .pw-nav-palo { transform: translate(-50%, -11px); }
+  .header-menu-movil .pw-nav-item:hover .pw-nav-palo,
+  .header-menu-movil .pw-nav-item:focus-visible .pw-nav-palo { transform: none; }
+}
